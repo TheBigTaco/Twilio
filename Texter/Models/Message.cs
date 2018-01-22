@@ -32,7 +32,7 @@ namespace Texter.Models
 
         public void Send()
         {
-            var client = new RestClient("https:api.twilio.com/2010-04-01");
+            var client = new RestClient("https://api.twilio.com/2010-04-01");
             var request = new RestRequest("Accounts/" + EnvironmentVariables.AccountSid + "/Messages", Method.POST);
             request.AddParameter("To", To);
             request.AddParameter("From", From);
