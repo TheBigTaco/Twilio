@@ -1,16 +1,20 @@
-﻿@model Texter.Models.Message
+﻿@model Texter.ViewModels.ContactsMessage
 
 <h2>Send a new Message</h2>
 <hr/>
+@{
+    Model.Message.From = "6196482837";
+}
 @using (Html.BeginForm())
 {
-    @Html.LabelFor(model => model.To)
-    @Html.TextBoxFor(model => model.To)
-    @Html.LabelFor(model => model.From)
-    @Html.TextBoxFor(model => model.From)
-    @Html.LabelFor(model => model.Body)
-    @Html.TextBoxFor(model => model.Body)
+    @Html.LabelFor(model => model.Message.To)
+    @Html.DropDownListFor(model => model.Message.To, new SelectList(Model.Contacts, "Number", "Name"))
+    @Html.LabelFor(model => model.Message.From)
+    @Html.TextBoxFor(model => model.Message.From)   
+    @Html.LabelFor(model => model.Message.Body)
+    @Html.TextBoxFor(model => model.Message.Body)
     <input type="submit" value="Send!" />
 }
+
 
 @Html.ActionLink("Back Home", "Index")
